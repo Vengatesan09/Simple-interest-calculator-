@@ -1,0 +1,132 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Responsive Simple Interest Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #80ffe8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .calculator {
+      background: #e6f0fa;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .calculator h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #0000ff, #000088);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #000088, #0000ff);
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      text-align: center;
+      color: #333;
+    }
+
+    @media (max-width: 500px) {
+      .calculator {
+        padding: 20px 15px;
+      }
+
+      .calculator h2 {
+        font-size: 1.25rem;
+      }
+
+      input, button {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h2>THE SIMPLE INTEREST Calculator</h2>
+    <label for="principal">Principal Amount</label>
+    <input type="number" id="principal" placeholder="Enter principal amount">
+
+    <label for="rate">Enter Your Rate</label>
+    <input type="number" id="rate" placeholder="Enter rate (%)">
+
+    <label for="time">Years You Need</label>
+    <input type="number" id="time" placeholder="Enter time (years)">
+
+    <button onclick="calculateInterest()">Calculate Interest</button>
+
+    <div class="result" id="result"> </div>
+  </div>
+
+  <script>
+    function calculateInterest() {
+      const P = parseFloat(document.getElementById('principal').value);
+      const R = parseFloat(document.getElementById('rate').value);
+      const T = parseFloat(document.getElementById('time').value);
+      const result = document.getElementById('result');
+
+      if (isNaN(P) || isNaN(R) || isNaN(T)) {
+        result.innerText = "Please fill all fields correctly.";
+        return;
+      }
+
+      const SI = (P * R * T) / 100;
+      result.innerText = `Simple Interest: ₹${SI.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
+
